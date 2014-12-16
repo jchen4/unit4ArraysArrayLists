@@ -17,8 +17,8 @@ public class RadarViewer
         // create the radar, set the monster location, and perform the initial scan
         final int ROWS = 100;
         final int COLS = 100;
-        Radar radar = new Radar(ROWS, COLS);
-        radar.setNoiseFraction(0.10);
+        Radar radar = new Radar(ROWS, COLS, 2,2);
+        radar.setNoiseFraction(0.05);
         radar.scan();
         
         JFrame frame = new JFrame();
@@ -39,7 +39,7 @@ public class RadarViewer
         
         // perform 100 scans of the radar wiht a slight pause between each
         // after each scan, instruct the Java Run-Time to redraw the window
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 20; i++)
         {
             Thread.sleep(100); // sleep 100 milliseconds (1/10 second)
             
@@ -47,6 +47,9 @@ public class RadarViewer
             
             frame.repaint();
         }
+        //prints the x and y velocities
+        System.out.println("The x velocity is: " + radar.getMost()[0]);
+        System.out.println("The y velocity is: " + radar.getMost()[1]);
     }
 
 }
